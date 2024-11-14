@@ -48,7 +48,7 @@ public class CalLv1 {
                     if (num2 == 0) {
                         System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                     } else {
-                        System.out.println("결과: " + (num1 / num2));
+                        System.out.println("결과: " + ((double)num1 / num2));
                     }
                     break;
                 } else {
