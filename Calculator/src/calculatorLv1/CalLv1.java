@@ -1,4 +1,4 @@
-package calculator;
+package calculatorLv1;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class CalLv1 {
         while (true) {
             int num1;
             int num2;
-            String operator;
+            char operator;
 
             while (true) {
                 System.out.print("첫 번째 숫자를 입력하세요 : ");
@@ -23,9 +23,9 @@ public class CalLv1 {
 
             while (true) {
                 System.out.print("사칙연산 기호를 입력하세요 : ");
-                operator = scanner.next();
+                operator = scanner.next().charAt(0);
                 // String operator = scanner.nextLine(); 사용했을 경우 연산 기호 입력값이 틀렸다는 오류 발생 줄바꿈까지 읽어와서 인식을 못 하는듯 함
-                if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
+                if (operator == '+' || operator == '-' || operator == '*' || operator == '/') {
                     break;
                 } else {
                     System.out.println("잘못된 연산 기호입니다. 다시 입력해주세요.");
@@ -42,13 +42,13 @@ public class CalLv1 {
                 }
             }
 
-            if (operator.equals("+")) {
+            if (operator == '+') {
                 System.out.println("결과: " + (num1 + num2));
-            } else if (operator.equals("-")) {
+            } else if (operator == '-') {
                 System.out.println("결과: " + (num1 - num2));
-            } else if (operator.equals("*")) {
+            } else if (operator == '*') {
                 System.out.println("결과: " + (num1 * num2));
-            } else if (operator.equals("/")) {
+            } else if (operator == '/') {
                 if (num2 == 0) {
                     System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                 } else {
