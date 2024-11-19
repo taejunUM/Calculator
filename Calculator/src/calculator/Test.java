@@ -2,46 +2,48 @@ package calculator;
 
 import java.util.Scanner;
 
-public class CalLv1 {
+public class Test {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            int num1;
-            int num2;
+            int num1, num2;
             String operator;
 
+            // 첫 번째 숫자 입력
             while (true) {
                 System.out.print("첫 번째 숫자를 입력하세요 : ");
                 num1 = scanner.nextInt();
                 if (0 <= num1) {
                     break;
                 } else {
-                    System.out.println("0이상 양의 정수 값을 입력하세요.");
+                    System.out.println("0 이상 양의 정수 값을 입력하세요.");
                 }
             }
 
+            // 사칙연산 기호 입력
             while (true) {
-                System.out.print("사칙연산 기호를 입력하세요 : ");
+                System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /): ");
                 operator = scanner.next();
-                // String operator = scanner.nextLine(); 사용했을 경우 연산 기호 입력값이 틀렸다는 오류 발생 줄바꿈까지 읽어와서 인식을 못 하는듯 함
                 if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
-                    break;
+                    break; // 올바른 기호를 입력받으면 반복 종료
                 } else {
                     System.out.println("잘못된 연산 기호입니다. 다시 입력해주세요.");
                 }
             }
 
+            // 두 번째 숫자 입력
             while (true) {
                 System.out.print("두 번째 숫자를 입력하세요 : ");
                 num2 = scanner.nextInt();
                 if (0 <= num2) {
                     break;
                 } else {
-                    System.out.println("0이상 양의 정수 값을 입력하세요.");
+                    System.out.println("0 이상 양의 정수 값을 입력하세요.");
                 }
             }
 
+            // 계산 수행
             if (operator.equals("+")) {
                 System.out.println("결과: " + (num1 + num2));
             } else if (operator.equals("-")) {
@@ -50,19 +52,21 @@ public class CalLv1 {
                 System.out.println("결과: " + (num1 * num2));
             } else if (operator.equals("/")) {
                 if (num2 == 0) {
-                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                    System.out.println("나눗셈 연산에서 분모(두 번째 숫자)가 0이 될 수 없습니다.");
                 } else {
                     System.out.println("결과: " + ((double) num1 / num2));
                 }
             }
-            System.out.print("더 계산하시려면 아무 키나 입력해주세요. (exit를 입력하면 종료됩니다.) ");
+
+            // 추가 계산 여부 확인
+            System.out.print("더 계산하시겠습니까? (y / n): ");
             String exit = scanner.next();
-            if (exit.equals("exit")) {
+            if (exit.equalsIgnoreCase("n")) {
                 System.out.println("계산기를 종료합니다.");
-                break;
-            } else {
-                System.out.println("추가 계산을 시작합니다.");
+                break; // 프로그램 종료
             }
         }
+
+        scanner.close(); // 스캐너 닫기
     }
 }
