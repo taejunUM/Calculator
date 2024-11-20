@@ -1,16 +1,19 @@
-package calculatorLv1;
+package calculatorLv2;
 
 import java.util.Scanner;
 
-public class CalLv1 {
+//
+public class App {
     public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            int num1;
-            int num2;
-            char symbol;
+        int num1;
+        int num2;
+        char symbol;
 
+        while (true) {
             while (true) {
                 System.out.print("첫 번째 숫자를 입력하세요 : ");
                 num1 = scanner.nextInt();
@@ -41,19 +44,15 @@ public class CalLv1 {
                 }
             }
 
-            if (symbol == '+') {
-                System.out.println("결과: " + (num1 + num2));
-            } else if (symbol == '-') {
-                System.out.println("결과: " + (num1 - num2));
-            } else if (symbol == '*') {
-                System.out.println("결과: " + (num1 * num2));
-            } else if (symbol == '/') {
-                if (num2 == 0) {
-                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                } else {
-                    System.out.println("결과: " + ((double) num1 / num2));
-                }
-            }
+            int result = calculator.calculate(num1, symbol, num2);
+            System.out.println("계산결과 : " + result);
+
+
+            calculator.setArrayList(result);
+            System.out.println("지금까지 저장된 결과: " + calculator.getResults());
+
+            System.out.println("처음 저장된 결과를 삭제하겠습니까? (y / n)");
+
             System.out.print("더 계산하시려면 아무 키나 입력해주세요. (exit를 입력하면 종료됩니다.) ");
             String exit = scanner.next();
             if (exit.equals("exit")) {
