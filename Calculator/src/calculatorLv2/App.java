@@ -6,43 +6,14 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
+        Input input = new Input();
 
         Scanner scanner = new Scanner(System.in);
 
-        int num1;
-        int num2;
-        char symbol;
-
         while (true) {
-            while (true) {
-                System.out.print("첫 번째 숫자를 입력하세요 : ");
-                num1 = scanner.nextInt();
-                if (0 <= num1) {
-                    break;
-                } else {
-                    System.out.println("0이상 양의 정수 값을 입력하세요.");
-                }
-            }
-
-            while (true) {
-                System.out.print("사칙연산 기호를 입력하세요 : ");
-                symbol = scanner.next().charAt(0);
-                if (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/') {
-                    break;
-                } else {
-                    System.out.println("잘못된 연산 기호입니다. 다시 입력해주세요.");
-                }
-            }
-
-            while (true) {
-                System.out.print("두 번째 숫자를 입력하세요 : ");
-                num2 = scanner.nextInt();
-                if (0 <= num2) {
-                    break;
-                } else {
-                    System.out.println("0이상 양의 정수 값을 입력하세요.");
-                }
-            }
+            int num1 = input.inputNum();
+            char symbol = input.inputSymbol();
+            int num2 = input.inputNum();
 
             int result = calculator.calculate(num1, symbol, num2);
             System.out.println("계산결과 : " + result);
